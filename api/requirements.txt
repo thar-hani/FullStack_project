@@ -7,3 +7,4 @@ python-multipart
 watchfiles
 python-dotenv
 passlib[bcrypt]
+psycopg2-binary
