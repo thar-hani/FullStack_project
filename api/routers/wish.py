@@ -1,9 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-import model as models
-import schemas as schemas
-from dependencies import get_db
-from routers.user import get_current_user
+from datetime import datetime
+from .. import model as models
+from .. import schemas as schemas
+from ..dependencies import get_db
+from .user import get_current_user
 
 router = APIRouter(prefix="/wishes", tags=["Wishes"])
 
