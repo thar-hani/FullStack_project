@@ -1,6 +1,7 @@
-from . import model as models
-from .db.database import engine
-from .routers import user, story, todo, wish
+from fastapi import FastAPI
+import model
+from db import database
+from routers import user, story, todo, wish
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -8,7 +9,7 @@ app = FastAPI()
 @app.on_event("startup")
 def startup():
     try:
-        models.Base.metadata.create_all(bind=engine)
+        model.Base.metadata.create_all(bind=database.engine)
     except Exception as e:
         print(f"Error creating tables: {e}")
 

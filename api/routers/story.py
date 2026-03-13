@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from .. import model as models
-from .. import schemas as schemas
+from .. import model
+from .. import schemas
 from ..dependencies import get_db
 from .user import get_current_user
 
@@ -11,9 +11,9 @@ router = APIRouter(prefix="/stories", tags=["Stories"])
 def create_story(
     story: schemas.StoryCreate, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    new_story = models.Story(**story.dict(), user_id=current_user.id)
+    new_story = model.Story(**story.dict(), user_id=current_user.id)
     db.add(new_story)
     db.commit()
     db.refresh(new_story)
@@ -22,19 +22,19 @@ def create_story(
 @router.get("/", response_model=list[schemas.StoryResponse])
 def get_my_stories(
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    return db.query(models.Story).filter(models.Story.user_id == current_user.id).all()
+    return db.query(model.Story).filter(model.Story.user_id == current_user.id).all()
 
 @router.get("/{story_id}", response_model=schemas.StoryResponse)
 def get_story(
     story_id: int, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    story = db.query(models.Story).filter(
-        models.Story.story_id == story_id, 
-        models.Story.user_id == current_user.id
+    story = db.query(model.Story).filter(
+        model.Story.story_id == story_id, 
+        model.Story.user_id == current_user.id
     ).first()
     if not story:
         raise HTTPException(status_code=404, detail="Story not found or access denied")
@@ -44,11 +44,11 @@ def get_story(
 def delete_story(
     story_id: int, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    story = db.query(models.Story).filter(
-        models.Story.story_id == story_id, 
-        models.Story.user_id == current_user.id
+    story = db.query(model.Story).filter(
+        model.Story.story_id == story_id, 
+        model.Story.user_id == current_user.id
     ).first()
     if not story:
         raise HTTPException(status_code=404, detail="Story not found or access denied")

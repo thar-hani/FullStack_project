@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from .. import model as models
-from .. import schemas as schemas
+from .. import model
+from .. import schemas
 from ..dependencies import get_db
 from .user import get_current_user
 
@@ -11,9 +11,9 @@ router = APIRouter(prefix="/todos", tags=["Todos"])
 def create_todo(
     todo: schemas.TodoCreate, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    new_todo = models.Todo(**todo.dict(), user_id=current_user.id)
+    new_todo = model.Todo(**todo.dict(), user_id=current_user.id)
     db.add(new_todo)
     db.commit()
     db.refresh(new_todo)
@@ -22,19 +22,19 @@ def create_todo(
 @router.get("/", response_model=list[schemas.TodoResponse])
 def get_my_todos(
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    return db.query(models.Todo).filter(models.Todo.user_id == current_user.id).all()
+    return db.query(model.Todo).filter(model.Todo.user_id == current_user.id).all()
 
 @router.get("/{todo_id}", response_model=schemas.TodoResponse)
 def get_todo(
     todo_id: int, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    todo = db.query(models.Todo).filter(
-        models.Todo.todo_id == todo_id, 
-        models.Todo.user_id == current_user.id
+    todo = db.query(model.Todo).filter(
+        model.Todo.todo_id == todo_id, 
+        model.Todo.user_id == current_user.id
     ).first()
     if not todo:
         raise HTTPException(status_code=404, detail="Todo not found or access denied")
@@ -45,11 +45,11 @@ def update_todo_status(
     todo_id: int, 
     todo_update: schemas.TodoUpdate, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    todo = db.query(models.Todo).filter(
-        models.Todo.todo_id == todo_id, 
-        models.Todo.user_id == current_user.id
+    todo = db.query(model.Todo).filter(
+        model.Todo.todo_id == todo_id, 
+        model.Todo.user_id == current_user.id
     ).first()
     if not todo:
         raise HTTPException(status_code=404, detail="Todo not found or access denied")
@@ -62,11 +62,11 @@ def update_todo_status(
 def delete_todo(
     todo_id: int, 
     db: Session = Depends(get_db),
-    current_user: models.User = Depends(get_current_user)
+    current_user: model.User = Depends(get_current_user)
 ):
-    todo = db.query(models.Todo).filter(
-        models.Todo.todo_id == todo_id, 
-        models.Todo.user_id == current_user.id
+    todo = db.query(model.Todo).filter(
+        model.Todo.todo_id == todo_id, 
+        model.Todo.user_id == current_user.id
     ).first()
     if not todo:
         raise HTTPException(status_code=404, detail="Todo not found or access denied")
