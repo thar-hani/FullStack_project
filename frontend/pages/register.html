@@ -81,7 +81,7 @@
         const emailID = document.getElementById("regEmail").value;
         const password = document.getElementById("regPassword").value;
 
-        const response = await fetch("http://localhost:8000/users/register",{
+        const response = await fetch("/api/users/register",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
