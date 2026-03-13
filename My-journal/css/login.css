@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.book {
+  width: 40px;
+}
+
+.name .logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #4e228f;
+}
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #0c0c0c;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #7872ea;
+}
+
+/* LOGIN CENTER */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+}
+
+.login-box {
+  background: #fbfafa;
+  width: 500px;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.logo-box h2 {
+  color: #0c0c0c;
+}
+
+.logo-box p {
+  color: #555;
+  font-size: 14px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.tabs p,
+a {
+  font-weight: 600;
+  color: #5c2178;
+  text-decoration: none;
+}
+
+.tabs .active {
+  color: #5c2178;
+  border-bottom: 2px solid #4f1185;
+}
+
+/* FORM */
+form {
+  text-align: left;
+}
+
+label {
+  font-size: 14px;
+  margin-top: 10px;
+  display: block;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.input-field input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.login-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 10px;
+  background: #675190;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #5b3f6c;
+}
+
+.extra-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.extra-links a {
+  color: #59337d;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.extra-links a {
+  text-decoration: underline;
+}
+
+.extra-links-A {
+  text-align: center;
+  margin-top: 15px;
+}
+.extra-links-A:hover {
+  text-decoration: underline;
+}
+
+.secure {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 13px;
+}
+@media (max-width: 400px) {
+
+  header{
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .features{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .features a{
+    font-size: 13px;
+  }
+
+  .login-wrapper{
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .login-box{
+    width: 95%;
+    padding: 20px;
+  }
+
+  .logo-box h2{
+    font-size: 18px;
+  }
+
+  .logo-box p{
+    font-size: 13px;
+  }
+
+  .tabs{
+    gap: 10px;
+  }
+
+  .tabs a,
+  .tabs p{
+    font-size: 13px;
+  }
+
+  label{
+    font-size: 13px;
+  }
+
+  .input-field{
+    padding: 7px;
+  }
+
+  .login-btn{
+    padding: 9px;
+    font-size: 14px;
+  }
+
+  .extra-links a{
+    font-size: 13px;
+  }
+
+  .secure{
+    font-size: 12px;
+  }
+  main.login-wrapper{
+    margin-top: 80px;
+  }
+
+}

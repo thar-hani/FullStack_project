@@ -1,0 +1,259 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.book {
+    width: 40px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a2ca0;
+}
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.features .logout{
+  width: 36px;
+  height: 36px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b91c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.features .logout:hover {
+  background: #c53838;
+  color: #fee2e2;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #7872ea;
+}
+
+main {
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  padding: 40px ;
+  gap: 40px;
+}
+
+.todo-container {
+  height: 250%;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(17, 4, 4, 0.05);
+}
+
+.todo-container h2 {
+  font-size: 24px;
+  margin-bottom: 7px;
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.todo-form input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+.todo-form input:focus {
+  outline: none;
+  border-color: #b8b8c6;
+}
+
+.add-btn {
+  padding: 12px;
+  background: #644c86;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.add-btn:hover {
+  background: #6d5a88;
+}
+
+.todo-list {
+  list-style: none;
+  margin-top: 24px;
+}
+
+.todo-list li {
+  padding: 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fafafa;
+  margin-bottom: 12px;
+}
+
+.task-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.task-top span {
+  font-size: 15px;
+}
+
+.todo-list small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #6b7280;
+}
+
+input[type="checkbox"]:checked + span {
+  text-decoration: line-through;
+  color: #9ca3af;
+}
+
+.footer-quote {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 14px;
+  color: #030209;
+  font-weight: 500;
+}
+/* MOBILE - 400px */
+@media (max-width: 400px) {
+
+  header{
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .name .story{
+    justify-content: center;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  /* navigation */
+  .features{
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .features a{
+    font-size: 13px;
+  }
+
+  .features .logout{
+    width: 30px;
+    height: 30px;
+  }
+
+  /* main layout */
+  main{
+    margin-top: 30px;
+    padding: 15px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .todo-container{
+    width: 100%;
+    padding: 15px;
+  }
+
+  .todo-container h2{
+    font-size: 18px;
+  }
+
+  .todo-form input{
+    padding: 10px;
+    font-size: 13px;
+  }
+
+  .add-btn{
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .todo-list li{
+    padding: 10px;
+  }
+
+  .task-top span{
+    font-size: 14px;
+  }
+
+  .todo-list small{
+    font-size: 11px;
+  }
+
+  .footer-quote{
+    font-size: 12px;
+  }
+
+}

@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journal – To-Do</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/to-do.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="name">
+        <a href="../index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+ <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="logout"
+          ><i class="fa-solid fa-right-from-bracket"></i>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="todo-container">
+        <h2>Today’s Focus</h2>
+
+     <form class="todo-form" id="todoForm">
+  <input
+    type="text"
+    id="taskInput"
+    placeholder="What do you want to accomplish today?"
+    required
+  />
+  <input type="date" id="dateInput" required />
+  <input type="time" id="timeInput" required />
+  <button type="submit" class="add-btn">Add Task</button>
+</form>
+        
+</section>
+<section class="todo-container">
+        <ul class="todo-list" id="todoList">
+        </ul>
+        <p class="footer-quote">One task at a time. You’re doing great</p>
+      </section>
+    </main>
+
+    <script>
+
+// Load Todos
+function loadTodos() {
+  const userId = localStorage.getItem("user_id");
+  if (!userId) {
+      window.location.href = "login.html";
+      return;
+  }
+  fetch("http://127.0.0.1:8000/todos/", {
+    headers: {
+      "X-User-ID": userId
+    }
+  })
+    .then(res => {
+      if (res.status === 401) {
+          localStorage.removeItem("user_id");
+          window.location.href = "login.html";
+          return;
+      }
+      return res.json();
+    })
+    .then(data => {
+
+      const list = document.getElementById("todoList");
+      list.innerHTML = "";
+
+      data.forEach(todo => {
+const isChecked = todo.status === "Completed" ? "checked" : "";
+
+const li = `
+<li>
+  <div class="task-top">
+    <input type="checkbox"
+           ${isChecked}
+           onchange="updateStatus(${todo.todo_id}, this.checked)" />
+    <span class="${todo.status === "Completed" ? "done" : ""}">
+      ${todo.task}
+    </span>
+  </div>
+
+  <small>
+    ${todo.date} • ${todo.time} • 
+    <b>${todo.status}</b>
+  </small>
+</li>
+`;
+
+        list.innerHTML += li;
+      });
+    });
+}
+
+// Add Todo
+document.getElementById("todoForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const task = document.getElementById("taskInput").value;
+  const date = document.getElementById("dateInput").value;
+  const time = document.getElementById("timeInput").value;
+
+  const userId = localStorage.getItem("user_id");
+  fetch("http://127.0.0.1:8000/todos/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "X-User-ID": userId
+    },
+    body: JSON.stringify({
+      task: task,
+      date: date,
+      time: time,
+      status: "Pending"
+    })
+  })
+  .then(res => {
+    if (res.status === 401) {
+        localStorage.removeItem("user_id");
+        window.location.href = "login.html";
+        return;
+    }
+    return res.json();
+  })
+  .then(data => {
+    document.getElementById("todoForm").reset();
+    loadTodos();
+  });
+});
+
+// Update Status
+function updateStatus(id, checked) {
+
+  const newStatus = checked ? "Completed" : "Pending";
+
+  const userId = localStorage.getItem("user_id");
+  fetch(`http://127.0.0.1:8000/todos/${id}`, {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "X-User-ID": userId
+    },
+    body: JSON.stringify({
+      status: newStatus
+    })
+  })
+  .then(res => {
+    if (res.status === 401) {
+        localStorage.removeItem("user_id");
+        window.location.href = "login.html";
+        return;
+    }
+    return res.json();
+  })
+  .then(data => {
+    loadTodos();
+  })
+  .catch(error => console.error(error));
+}
+
+// LOAD TODOS WHEN PAGE OPENS
+loadTodos();
+</script>
+
+  </body>
+</html>

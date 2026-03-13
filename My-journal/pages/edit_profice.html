@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="../css/edit_profile.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+
+  <body>
+    <header>
+       <div class="name">
+        <a href="../index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+
+      <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="icon-btn logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+
+    </header>
+
+    <div class="container">
+      <div class="edit-box">
+        <div class="header">
+          <a href="./profile.html" class="back-btn">← Back</a>
+          <h2>Edit Profile</h2>
+        </div>
+
+        <form>
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Enter your name" required />
+
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Enter your email"
+            required
+          />
+
+          <label for="password">New Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Enter new password"
+            required
+          />
+
+          <button type="submit" class="save-btn">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

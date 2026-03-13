@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journal</title>
+
+    <!-- Google Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="../css/journal.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="name">
+        <a href="../index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+
+       <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="icon-btn logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+
+    </header>
+
+    <div class="container">
+      <aside class="sidebar">
+        <div class="search-box">
+          <h2>Search</h2>
+          <input type="search" placeholder="Search entries..." /><i class="fa-solid fa-magnifying-glass" id="searchBtn"
+   style="color: rgb(177, 151, 252); padding: 10px; cursor: pointer;"></i>
+        </div>
+
+        <div class="entries">
+        </div>
+      </aside>
+
+      <main class="main">
+        <div class="date">
+          <label>Date:</label>
+          <input type="date" id="dateInput"/>
+        </div>
+
+        <div class="mood">
+           <label>Mood:</label>
+           <div class="emojis">
+              <button class="emoji-btn">😃</button>
+              <button class="emoji-btn">😔</button>
+              <button class="emoji-btn">😡</button>
+              <button class="emoji-btn">😶</button>
+           </div>
+        </div>
+
+        <input type="text" id="titleInput" placeholder="Entry title..." class="title-input" />
+
+        <div class="text-toolbar">
+          <button class="tool-btn" id="bold-btn" title="Bold">
+            <i class="fa-solid fa-bold"></i>
+          </button>
+          <button class="tool-btn" id="italic-btn" title="Italic">
+            <i class="fa-solid fa-italic"></i>
+          </button>
+          <button class="tool-btn" id="underline-btn" title="Underline">
+            <i class="fa-solid fa-underline"></i>
+          </button>
+          <button class="tool-btn" id="highlight-btn" title="Highlight">
+            <i class="fa-solid fa-highlighter"></i>
+          </button>
+        </div>
+
+        <div id="contentInput" contenteditable="true" class="editor"></div>
+
+        <div class="filters">
+          <select id="tagSelect">
+            <option>All Tags</option>
+            <option>Happy</option>
+            <option>Sad</option>
+            <option>Angry</option>
+            <option>Neutral</option>
+          </select>
+        </div>
+
+        <div class="buttons">
+          <a class="cancel" href="../index.html">Cancel</a>
+          <button class="save" id="saveBtn">Save Entry</button>
+        </div>
+      </main>
+    </div>
+<script>
+function loadStories() {
+    const userId = localStorage.getItem("user_id");
+    if (!userId) {
+        window.location.href = "login.html";
+        return;
+    }
+    fetch("http://127.0.0.1:8000/stories/", {
+        headers: {
+            "X-User-ID": userId
+        }
+    })
+    .then(res => {
+        if (res.status === 401) {
+            localStorage.removeItem("user_id");
+            window.location.href = "login.html";
+            return;
+        }
+        return res.json();
+    })
+    .then(data => {
+
+        const container = document.querySelector(".entries");
+        container.innerHTML = "<h3>Entries</h3>";
+
+data.slice(-3).reverse().forEach(story => {
+
+    const entryDiv = document.createElement("div");
+    entryDiv.classList.add("entry");
+
+    entryDiv.innerHTML = `
+        <div class="entry-title">${story.title}</div>
+        <div class="entry-date">${story.date} • ${story.mood}</div>
+        <div class="entry-text"></div>
+        <span class="read-more">Read More</span>
+        <div class="tags">
+            <div class="tag">${story.tags}</div>
+        </div>
+    `;
+    const text = entryDiv.querySelector(".entry-text");
+                 text.innerHTML = story.story;
+    const readMoreBtn = entryDiv.querySelector(".read-more");
+
+    readMoreBtn.addEventListener("click", () => {
+
+    localStorage.setItem("selectedStory", JSON.stringify(story));
+
+    window.location.href = "save-journal.html";
+
+});
+
+    container.appendChild(entryDiv);
+});
+    });
+}
+
+// Load when page opens
+loadStories();
+let selectedMood = "";
+
+document.getElementById("contentInput").focus();
+
+const editor = document.getElementById("contentInput");
+
+// Bold
+document.getElementById("bold-btn").addEventListener("click", function() {
+    editor.focus();
+    document.execCommand("bold");
+});
+
+// Italic
+document.getElementById("italic-btn").addEventListener("click", function() {
+    editor.focus();
+    document.execCommand("italic");
+});
+
+// Underline
+document.getElementById("underline-btn").addEventListener("click", function() {
+    editor.focus();
+    document.execCommand("underline");
+});
+
+// Highlight
+document.getElementById("highlight-btn").addEventListener("click", function() {
+    editor.focus();
+    document.execCommand("hiliteColor", false, "yellow");
+});
+
+document.querySelectorAll(".emoji-btn").forEach(button => {
+    button.addEventListener("click", function() {
+        selectedMood = this.textContent;
+
+        // Optional: highlight selected emoji
+        document.querySelectorAll(".emoji-btn").forEach(btn => {
+            btn.style.transform = "scale(1)";
+        });
+        this.style.transform = "scale(1.3)";
+    });
+});
+
+// Search on icon click
+
+document.getElementById("searchBtn").addEventListener("click", function () {
+
+    let value = document.querySelector("input[type='search']").value.toLowerCase();
+    let entries = document.querySelectorAll(".entry");
+
+    entries.forEach(function (entry) {
+
+        if (entry.textContent.toLowerCase().includes(value)) {
+            entry.style.display = "block";
+        } else {
+            entry.style.display = "none";
+        }
+    let msg = document.getElementById("noResult");
+
+  if(!found){
+      msg.style.display = "block";
+  }else{
+      msg.style.display = "none";
+  }
+    });
+
+});
+
+//post method
+document.getElementById("saveBtn").addEventListener("click", function () {
+
+    const date = document.getElementById("dateInput").value;
+    const title = document.getElementById("titleInput").value;
+    const content = document.getElementById("contentInput").innerHTML;
+    const tag = document.getElementById("tagSelect").value;
+    
+    const userId = localStorage.getItem("user_id");
+    fetch("http://127.0.0.1:8000/stories/", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "X-User-ID": userId
+        },
+        body: JSON.stringify({
+        date: date,
+        title: title,
+        story: content,          
+        mood: selectedMood,
+        tags: tag 
+        })
+    })
+    .then(response => {
+        if (response.status === 401) {
+            localStorage.removeItem("user_id");
+            window.location.href = "login.html";
+            return;
+        }
+        return response.json();
+    })
+    .then(data => {
+    alert("Journal Saved Successfully!");
+    loadStories();   // refresh entries
+})
+    .catch(error => {
+        console.error("Error:", error);
+    });
+
+});
+
+</script>
+
+  </body>
+</html>

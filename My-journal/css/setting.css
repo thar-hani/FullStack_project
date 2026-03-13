@@ -1,0 +1,202 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #dfdfe0;;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.book {
+    width: 40px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a2ca0;
+}
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.features .logout{
+  width: 36px;
+  height: 36px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b91c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.features .logout:hover {
+  background: #c53838;
+  color: #fee2e2;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #7872ea;
+}
+.set{
+  display: flex;
+  justify-content:center ;
+}
+
+.container {
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+.card {
+  background: #fdfefe;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card h2 {
+  margin-bottom: 12px;
+  font-size: 18px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.row:last-child {
+  margin-bottom: 0;
+}
+
+select,
+input[type="time"] {
+  padding: 5px 8px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  background: #594873;
+  color: white;
+  cursor: pointer;
+}
+
+.btn.danger {
+  background: #594873;
+}
+
+.text {
+  font-size: 14px;
+  color: #0c0c0c;
+}
+/* MOBILE RESPONSIVE - 400px */
+@media (max-width: 400px) {
+
+  header{
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .name .story{
+    justify-content: center;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  /* navigation */
+  .features{
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .features a{
+    font-size: 13px;
+  }
+
+  .features .logout{
+    width: 30px;
+    height: 30px;
+  }
+
+  /* container */
+  .container{
+    width: 100%;
+    padding: 10px;
+  }
+
+  /* card */
+  .card{
+    padding: 12px;
+  }
+
+  .card h2{
+    font-size: 16px;
+  }
+
+  /* rows stack in mobile */
+  .row{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  select,
+  input[type="time"]{
+    width: 100%;
+  }
+
+  .btn{
+    width: 100%;
+    text-align: center;
+  }
+
+  .text{
+    font-size: 13px;
+  }
+
+}

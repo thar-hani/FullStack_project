@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>My Wishes</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/wish-list.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="name">
+        <a href="../index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+
+ <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="icon-btn logout"
+          ><i class="fa-solid fa-right-from-bracket"></i
+        ></a>
+      </div>
+    </header>
+
+<h1>Wish List</h1>
+
+<div class="container">
+
+  <div class="card">
+    <h3>My Wish</h3>
+    <textarea id="wishText" placeholder="Write your wish here..."></textarea>
+    <button type="button" id="wishBtn">Save</button>
+  </div>
+
+  <div class="card">
+    <h3>Self Care</h3>
+    <textarea id="selfCareText" placeholder="What do you want to do for yourself?"></textarea>
+    <button type="button" id="selfCareBtn">Save</button>
+  </div>
+
+  <div class="card">
+    <h3>Goal</h3>
+    <textarea id="goalText" placeholder="What goal do you want to achieve?"></textarea>
+    <button type="button" id="goalBtn">Save</button>
+  </div>
+
+  <div class="card">
+    <h3>Career Wish</h3>
+    <textarea id="careerText" placeholder="Something you want to experience..."></textarea>
+    <button type="button" id="careerBtn">Save</button>
+  </div>
+
+</div>
+</div>
+<script>
+
+    function saveWish(category, textareaId) {
+        const textarea = document.getElementById(textareaId);
+        const wishText = textarea.value;
+
+        if (!wishText.trim()) {
+            alert("Please write something first!");
+            return;
+        }
+
+        const userId = localStorage.getItem("user_id");
+
+        if (!userId) {
+            window.location.href = "login.html";
+            return;
+        }
+
+        fetch("http://127.0.0.1:8000/wishes/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-User-ID": userId
+            },
+            body: JSON.stringify({
+                categories: category,
+                wishes: wishText,
+                status: "Planning"
+            })
+        })
+        .then(res => {
+            if (res.status === 401) {
+                localStorage.removeItem("user_id");
+                window.location.href = "login.html";
+                return;
+            }
+            if (!res.ok) {
+                return res.json().then(error => { throw error; });
+            }
+            return res.json();
+        })
+        .then(data => {
+            alert(category + " saved successfully!");
+            textarea.value = "";
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("❌ Failed to save wish: " + (error.detail || "Unknown error"));
+        });
+    }
+
+    document.getElementById("wishBtn").onclick = () => saveWish("My Wish", "wishText");
+    document.getElementById("selfCareBtn").onclick = () => saveWish("Self Care", "selfCareText");
+    document.getElementById("goalBtn").onclick = () => saveWish("Goal", "goalText");
+    document.getElementById("careerBtn").onclick = () => saveWish("Career Wish", "careerText");
+
+</script>
+  </body>
+</html>

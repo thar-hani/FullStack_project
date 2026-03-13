@@ -1,0 +1,324 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.book {
+    width: 40px;
+}
+
+.logo {
+    font-size: 21px;
+    font-weight: 600;
+    color: #5a2ca0;
+}
+
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.features .logout{
+  width: 36px;
+  height: 36px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b91c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.features .logout:hover {
+  background: #c53838;
+  color: #fee2e2;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #9893ed;
+}
+/* main */
+.container {
+  width: 100%;
+  max-width: 750px;
+  margin: 40px auto;   
+  padding: 0 15px;
+}
+/* Tabs Layout */
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+/* Left side links */
+.tab-links {
+  display: flex;
+  gap: 85px;
+}
+
+.tab-links a,
+.tab-links span {
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  color: #5c2178;
+}
+
+.tab-links .active {
+  border-bottom: 2px solid #5c2178;
+  padding-bottom: 3px;
+}
+/* CONTAINER */
+.container {
+  width: 100%;
+  max-width: 750px;
+}
+
+/* TABS */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.tabs a,
+.tabs p {
+  text-decoration: none;
+  color: #5c2178;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.tabs .active {
+  border-bottom: 2px solid #5c2178;
+  padding-bottom: 3px;
+}
+
+.new-entry {
+  background: #7d60a0;
+  color: white !important;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  transition: 0.2s;
+}
+
+.new-entry:hover {
+  background: #624783;
+}
+
+.search{
+  margin-left: 90px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 7px;
+  width: 500px;
+}
+
+/* CARD WRAPPER */
+.card-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* DEMO CONTAINER */
+
+#demo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 10px;
+}
+
+/* CARD STYLE FOR CURRENT JS */
+
+.card {
+  background: white;
+  padding: 18px;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+  transition: 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+}
+
+.card h3 {
+  padding: 0;
+  font-size: 17px;
+  margin-bottom: 6px;
+  color: #5c2178;
+}
+
+.home{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.card p {
+  font-size: 14px;
+  color: #444;
+  line-height: 1.5;
+  margin-bottom: 6px;
+}
+
+
+/* Catagory btn */
+button{
+  display: flex;
+  padding: 5px;
+  border: 1px solid lavender;
+  border-radius: 8px;
+  background: rgb(214, 214, 249);
+}
+
+/* DELETE BUTTON */
+.delete-btn {
+  background: #fab4b4;
+  color: #b10000;
+  border: none;
+  /* margin-left: 550px; */
+  padding: 3px;   /* smaller padding */
+  font-size: 13px;    /* smaller text */
+  border-radius: 4px; /* slightly smaller corners */
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.delete-btn:hover {
+  background: #ffdddd;
+}
+
+
+/* MOBILE - 400px */
+@media (max-width: 400px) {
+
+  header{
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .name .story{
+    justify-content: center;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  /* navigation */
+  .features{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .features a{
+    font-size: 13px;
+  }
+
+  .features .logout{
+    width: 30px;
+    height: 30px;
+  }
+
+  /* container */
+  .container{
+    margin: 20px auto;
+    padding: 0 10px;
+  }
+
+  /* tabs */
+  .tabs{
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .tab-links{
+    gap: 25px;
+  }
+
+  .tabs a{
+    font-size: 13px;
+  }
+
+  .new-entry{
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  /* journal card */
+  .journal-card{
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+  }
+
+  .journal-content h3{
+    font-size: 15px;
+  }
+
+  .journal-content p{
+    font-size: 13px;
+  }
+
+  .delete-btn{
+    align-self: flex-end;
+    font-size: 11px;
+  }
+
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Journal - Register</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="stylesheet" href="../css/register.css" />
+  </head>
+
+  <body>
+    <header>
+       <div class="name">
+        <a href="../index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+
+    
+      <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="icon-btn logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+
+    </header>
+
+    <div class="page-wrapper">
+      <div class="container">
+        <div class="login-box">
+          <h2>My Journal</h2>
+
+          <div class="tabs">
+            <a href="./login.html">Login</a>
+            <p class="active">Register</p>
+          </div>
+
+          <form onsubmit="register(event)">
+            <label>Full Name</label>
+            <div class="input-field">
+              <input type="text" id="regName" placeholder="Enter your name" required />
+            </div>
+
+            <label>Email</label>
+            <div class="input-field">
+              <input type="email" id="regEmail" placeholder="Enter your email" required />
+            </div>
+
+            <label>Password</label>
+            <div class="input-field">
+              <input type="password" id="regPassword" placeholder="Enter password" required />
+            </div>
+
+            <button type="submit" class="login-btn">Register</button>
+
+            <div class="extra-links">
+              <a href="./login.html">Already have an account? Login</a>
+            </div>
+
+            <p class="secure">Secure & Private</p>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+    async function register(event){
+        event.preventDefault();
+        const full_name = document.getElementById("regName").value;
+        const emailID = document.getElementById("regEmail").value;
+        const password = document.getElementById("regPassword").value;
+
+        const response = await fetch("http://localhost:8000/users/register",{
+            method:"POST",
+            headers:{
+                "Content-Type":"application/json"
+            },
+            body:JSON.stringify({
+                full_name: full_name,
+                emailID: emailID,
+                password: password
+            })
+        });
+
+        const data = await response.json();
+
+        if(response.ok){
+            alert("✅ Registration Successful! Please login.");
+            window.location.href="../pages/login.html";
+        } else {
+            alert("❌ Registration Failed: " + (data.detail || "Unknown error"));
+        }
+    }
+    </script>
+  </body>
+</html>

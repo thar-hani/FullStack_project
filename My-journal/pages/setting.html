@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Diary Settings</title>
+    <link rel="stylesheet" href="../css/setting.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <header>
+       <div class="name">
+        <a href="/index.html" class="story">
+            <img src="../assets/book (1).png" class="book">
+            <div class="logo">My Journal</div>
+        </a>
+    </div>
+
+      <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="icon-btn logout"><i class="fa-solid fa-right-from-bracket"></i></a>
+      </div>
+    </header>
+
+    <h1 class="set">Settings</h1>
+    <main class="container">
+      <section class="card">
+        <h2>General</h2>
+        <div class="row">
+          <span>Theme</span>
+          <select>
+            <option>Light</option>
+            <option>Dark</option>
+          </select>
+        </div>
+        <div class="row">
+          <span>Auto Save</span>
+          <input type="checkbox" checked />
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Writing Preferences</h2>
+        <div class="row">
+          <span>Font Size</span>
+          <select>
+            <option>Small</option>
+            <option selected>Medium</option>
+            <option>Large</option>
+          </select>
+        </div>
+        <div class="row">
+          <span>Show Mood Picker</span>
+          <input type="checkbox" />
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Notifications</h2>
+        <div class="row">
+          <span>Daily Reminder</span>
+          <input type="checkbox" />
+        </div>
+        <div class="row">
+          <span>Reminder Time</span>
+          <input type="time" />
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Privacy & Security</h2>
+        <div class="row">
+          <span>Privacy Mode</span>
+          <select>
+            <option>Private</option>
+            <option>Public</option>
+          </select>
+        </div>
+        <div class="row">
+          <span>App Lock</span>
+          <input type="checkbox" />
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Backup & Data</h2>
+        <div class="row">
+          <span>Auto Backup</span>
+          <input type="checkbox" />
+        </div>
+        <div class="row">
+          <button class="btn">Export Diary</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Account</h2>
+        <div class="row">
+          <span>Edit Profile</span>
+          <button class="btn">Edit</button>
+        </div>
+        <div class="row">
+          <button class="btn danger">Logout</button>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>About</h2>
+        <p class="text">
+          My Diary App v1.0 <br />
+          A safe place to write your thoughts.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

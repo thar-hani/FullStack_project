@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saved Wish-List</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/save-wish.css" />
+  </head>
+
+  <body>
+    <header>
+      <div class="name">
+        <a href="../index.html" class="story">
+          <img src="../assets/book (1).png" class="book" />
+          <div class="logo">My Journal</div>
+        </a>
+      </div>
+
+      <div class="features">
+        <a href="./save-journal.html" class="story">My Journey</a>
+        <a href="./journal.html" class="story">Story</a>
+        <a href="./to-do-list.html" class="todo">Todo</a>
+        <a href="./wish-list.html" class="wishe">Wishes</a>
+        <a href="./profile.html" class="profile">Profile </a>
+        <a href="./login.html" class="logout"
+          ><i class="fa-solid fa-right-from-bracket"></i
+        ></a>
+      </div>
+    </header>
+    <main class="container">
+      <div class="tabs">
+        <a href="./save-journal.html">Story</a>
+        <a href="./save-todo.html">To-Do</a>
+        <p class="active">Wishes</p>
+        <a href="./wish-list.html" class="new-task">+ New Wish</a>
+      </div>
+
+    <!-- search -->
+       <input type="search" placeholder="Search entries..."  class="search"/><i class="fa-solid fa-magnifying-glass" id="searchBtn"
+   style="color: rgb(177, 151, 252); padding: 10px; cursor: pointer;"></i>
+
+      <div id="demo"></div>
+    </main>
+
+    <script>
+     const container = document.getElementById("demo");
+
+     const userId = localStorage.getItem("user_id");
+     if (!userId) {
+         window.location.href = "login.html";
+         
+     }
+fetch("http://127.0.0.1:8000/wishes/", {
+    headers: {
+        "X-User-ID": userId
+    }
+})
+  .then((response) => {
+    if (response.status === 401) {
+        localStorage.removeItem("user_id");
+        window.location.href = "login.html";
+        return;
+    }
+    return response.json();
+  })
+  .then((data) => {
+
+    data.forEach((wish) => {
+
+      const card = document.createElement("div");
+      card.classList.add("card","wish-card");
+
+      card.innerHTML = `
+      <div class="wish-info">
+        <div class="heading">  
+          <h3>${wish.wishes}</h3>
+          <button class="delete-btn" data-id="${wish.wish_id}">Delete</button>
+        </div>
+
+        <div class="meta">
+          <span class="category">${wish.categories}</span>
+          <span class="date">${wish.date}</span>
+          <span class="time">${wish.time}</span>
+          <span class="status ${wish.status === "Achieved" ? "achieved" : "pending"}">
+            ${wish.status}
+          </span>
+        </div>
+      </div>
+      `;
+
+      container.appendChild(card);
+    });
+
+  });
+
+
+// ✅ SEARCH
+document.getElementById("searchBtn").addEventListener("click", function () {
+
+  let value = document.querySelector(".search").value.toLowerCase();
+  let wishes = document.querySelectorAll(".wish-card");
+
+  wishes.forEach(function(wish){
+
+    if (wish.textContent.toLowerCase().includes(value)) {
+        wish.style.display = "block";
+    } else {
+        wish.style.display = "none";
+    }
+
+  });
+
+});
+
+
+// ✅ DELETE
+container.addEventListener("click", function(e){
+
+  if(e.target.classList.contains("delete-btn")){
+
+    const id = e.target.getAttribute("data-id");
+
+    fetch(`http://127.0.0.1:8000/wishes/${id}`,{
+      method:"DELETE",
+      headers: {
+          "X-User-ID": userId
+      }
+    })
+    .then(res => {
+      if(res.ok){
+        e.target.closest(".wish-card").remove();
+      }
+    })
+    .catch(err => console.log(err));
+
+  }
+
+});
+    </script>
+  </body>
+</html>

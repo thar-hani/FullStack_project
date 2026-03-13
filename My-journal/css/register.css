@@ -1,0 +1,257 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.book {
+    width: 40px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a2ca0;
+}
+
+
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.features .logout{
+  width: 36px;
+  height: 36px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b91c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.features .logout:hover {
+  background: #c53838;
+  color: #fee2e2;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #7872ea;
+}
+
+.page-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 70px);
+}
+
+.container {
+  background: #fff;
+  width: 500px;
+  padding: 25px 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.login-box {
+  text-align: center;
+}
+
+.login-box h2 {
+  color: #0a0a0a;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.tabs a,p {
+  text-decoration: none;
+  color: #5c2178;
+  font-weight: 600;
+}
+
+.tabs .active {
+  color: #5c2178;
+  border-bottom: 2px solid #630f0f;
+}
+
+form {
+  text-align: left;
+}
+
+label {
+  margin-top: 10px;
+  display: block;
+  font-size: 14px;
+}
+
+.input-field {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+}
+
+.input-field input {
+  border: none;
+  outline: none;
+  width: 100%;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 10px;
+  background: #7d60a0;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.login-btn:hover {
+  background: #614a69;
+}
+
+.extra-links {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.extra-links a {
+  color: #5d3176;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.secure {
+  text-align: center;
+  margin-top: 15px;
+  font-size: 13px;
+  color: #141414;
+}
+/* MOBILE - 400px */
+@media (max-width: 400px) {
+
+  header{
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    text-align: center;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  .features{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .features a{
+    font-size: 13px;
+  }
+
+  .features .logout{
+    width: 30px;
+    height: 30px;
+  }
+
+  .page-wrapper{
+    height: auto;
+    padding: 20px 10px;
+  }
+
+  .container{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .login-box h2{
+    font-size: 18px;
+  }
+
+  .tabs{
+    gap: 15px;
+  }
+
+  .tabs a,
+  .tabs p{
+    font-size: 13px;
+  }
+
+  label{
+    font-size: 13px;
+  }
+
+  .input-field{
+    padding: 7px 8px;
+  }
+
+  .login-btn{
+    padding: 9px;
+    font-size: 14px;
+  }
+
+  .extra-links a{
+    font-size: 13px;
+  }
+
+  .secure{
+    font-size: 12px;
+  }
+
+}

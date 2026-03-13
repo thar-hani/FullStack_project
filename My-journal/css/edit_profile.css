@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.book {
+    width: 40px;
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 600;
+    color: #5a2ca0;
+}
+/* Navigation Links */
+.features {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.features .logout{
+  width: 36px;
+  height: 36px;
+  background: #fee2e2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #b91c1c;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.features .logout:hover {
+  background: #c53838;
+  color: #fee2e2;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #7872ea;
+}
+
+
+/*Page Container */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 16px;
+}
+
+/*Edit Profile Box */
+.edit-box {
+  background: #ffffff;
+  width: 100%;
+  max-width: 380px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Header inside form */
+.edit-box .header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.edit-box h2 {
+  font-size: 22px;
+  color: #05000a;
+}
+
+/* Back button */
+.back-btn {
+  text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: #e8f0fe;
+  color: #300950;
+  font-size: 14px;
+  margin-right:25px ;
+}
+
+.back-btn:hover {
+  background: #4a216b;
+  color: #fff;
+}
+
+/*Form */
+form label {
+  display: block;
+  margin: 12px 0 6px;
+  font-size: 14px;
+  color: #374151;
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+}
+
+form input:focus {
+  outline: none;
+  border-color: #090606;
+}
+
+/* Save button */
+.save-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  background: #5f3e76;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.save-btn:hover {
+  background: #775485;
+}
+/* Mobile - 400px */
+@media (max-width: 400px) {
+
+  header{
+    padding: 12px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .features{
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .container{
+    margin-top: 80px;
+    padding: 30px 12px;
+  }
+
+  .edit-box{
+    max-width: 100%;
+    padding: 20px;
+    border-radius: 12px;
+  }
+
+  .edit-box h2{
+    font-size: 18px;
+  }
+
+  .back-btn{
+    font-size: 12px;
+    padding: 5px 10px;
+    margin-right: 10px;
+  }
+
+  form input{
+    padding: 9px;
+    font-size: 13px;
+  }
+
+  .save-btn{
+    padding: 10px;
+    font-size: 14px;
+  }
+
+}

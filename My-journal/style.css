@@ -1,0 +1,140 @@
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.book {
+  width: 40px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5a2ca0;
+}
+.right {
+  display: flex;
+  gap: 15px;
+}
+
+.right a {
+  width: 36px;
+  height: 36px;
+  background: #f1f5f9;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #080708;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.right a:hover {
+  background: #6d4c7e;
+  color: white;
+}
+
+.right .logout {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.container {
+  flex: 1;
+  text-align: center;
+  padding: 180px 20px;
+  margin-top: 40px;
+}
+
+
+.subtitle {  
+  color: #6e62b1;
+  margin-bottom: 85px;
+  padding-right: 40px;  
+  align-items: center;
+  font-size: 2rem;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.card {
+  background: #ffffff;
+  width: 240px;
+  padding: 30px 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: rotate(5deg);
+  background: #c5b8d5;
+}
+
+.card h3 {
+  color: #402389;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #121213;
+  font-size: 14px;
+}
+
+.footer {
+  text-align: center;
+  padding: 15px ;
+  font-size: 13px;
+  color: #f6f7f9; 
+  justify-content: end;
+}
+
+@media (max-width: 768px) {
+  .card-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .container {
+     padding: 20px;
+     margin: 10px;
+  }
+  .subtitle{
+    margin: 10px;
+    padding: 20px;
+  }
+}

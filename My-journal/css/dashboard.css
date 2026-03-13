@@ -1,0 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #dfdfe0;
+  min-height: 100vh;
+}
+
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #f2f2f2;
+}
+
+/* Logo Section */
+.name .story {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.book {
+  width: 40px;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #5a2ca0;
+}
+
+/* Navigation Links */
+.features {
+  display: flex;
+  gap: 25px;
+}
+
+.features a {
+  text-decoration: none;
+  color: #555;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.features a:hover {
+  color: #74729a;
+}
+
+/* Main Container */
+.container {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 25px;
+  padding: 90px 280px;
+}
+
+.add {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Cards */
+.card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Header */
+.add p {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Buttons */
+button {
+  background: #363370;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 15px;
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #524ca7;
+}
+
+/* No Results Text */
+.result {
+  background: #f2f2f3;
+  padding: 15px;
+  border-radius: 8px;
+  color: #777;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Mobile - 400px */
+@media (max-width: 400px) {
+
+  header{
+    padding: 12px 16px;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .book{
+    width: 28px;
+  }
+
+  .logo{
+    font-size: 16px;
+  }
+
+  .features{
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .container{
+    padding: 30px 16px;
+    gap: 18px;
+  }
+
+  .add{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .card{
+    padding: 18px;
+  }
+
+  .add p{
+    font-size: 16px;
+  }
+
+  button{
+    padding: 7px 12px;
+    font-size: 13px;
+    
+  }
+
+}
