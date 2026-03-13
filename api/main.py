@@ -9,7 +9,8 @@ app = FastAPI()
 @app.on_event("startup")
 async def startup():
     try:
-        model.Base.metadata.create_all(bind=database.engine)
+        if database.engine:
+            model.Base.metadata.create_all(bind=database.engine)
     except Exception as e:
         print("Database initialization failed:", e)
 
@@ -24,6 +25,10 @@ app.add_middleware(
 @app.get("/")
 def root():
     return {"message": "API is running successfully"}
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
 
 app.include_router(user.router)
 app.include_router(story.router)
