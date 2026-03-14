@@ -6,6 +6,6 @@ pydantic-settings
 python-multipart
 watchfiles
 python-dotenv
-passlib[bcrypt]
+passlib[bcrypt]==1.7.4
 psycopg2-binary
-bcrypt
+bcrypt==4.0.1
