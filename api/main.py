@@ -22,7 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-@app.get("/")
+@app.get("/api/")
 def root():
     return {"message": "API is running successfully"}
 
@@ -30,7 +30,7 @@ def root():
 def health():
     return {"status": "ok"}
 
-app.include_router(user.router)
-app.include_router(story.router)
-app.include_router(todo.router)
-app.include_router(wish.router)
+app.include_router(user.router, prefix="/api")
+app.include_router(story.router, prefix="/api")
+app.include_router(todo.router, prefix="/api")
+app.include_router(wish.router, prefix="/api")
