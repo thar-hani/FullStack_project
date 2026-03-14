@@ -52,7 +52,7 @@
           window.location.href = "login.html";
           return;
       }
-      fetch("http://127.0.0.1:8000/stories/", {
+      fetch("/api/stories/", {
           headers: {
               "X-User-ID": userId
           }
@@ -88,7 +88,7 @@
 
   deleteBtn.addEventListener("click", function () {
 
-    fetch(`http://127.0.0.1:8000/stories/${story.story_id}`, {
+    fetch(`/api/stories/${story.story_id}`, {
       method: "DELETE",
       headers: {
           "X-User-ID": userId

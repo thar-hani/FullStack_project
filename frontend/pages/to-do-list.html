@@ -69,7 +69,7 @@ function loadTodos() {
       window.location.href = "login.html";
       return;
   }
-  fetch("http://127.0.0.1:8000/todos/", {
+  fetch("/api/todos/", {
     headers: {
       "X-User-ID": userId
     }
@@ -122,7 +122,7 @@ document.getElementById("todoForm").addEventListener("submit", function(e) {
   const time = document.getElementById("timeInput").value;
 
   const userId = localStorage.getItem("user_id");
-  fetch("http://127.0.0.1:8000/todos/", {
+  fetch("/api/todos/", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -155,7 +155,7 @@ function updateStatus(id, checked) {
   const newStatus = checked ? "Completed" : "Pending";
 
   const userId = localStorage.getItem("user_id");
-  fetch(`http://127.0.0.1:8000/todos/${id}`, {
+  fetch(`/api/todos/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

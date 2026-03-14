@@ -108,7 +108,7 @@ function loadStories() {
         window.location.href = "login.html";
         return;
     }
-    fetch("http://127.0.0.1:8000/stories/", {
+    fetch("/api/stories/", {
         headers: {
             "X-User-ID": userId
         }
@@ -235,7 +235,7 @@ document.getElementById("saveBtn").addEventListener("click", function () {
     const tag = document.getElementById("tagSelect").value;
     
     const userId = localStorage.getItem("user_id");
-    fetch("http://127.0.0.1:8000/stories/", {
+    fetch("/api/stories/", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",

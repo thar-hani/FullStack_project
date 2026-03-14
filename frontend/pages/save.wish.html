@@ -53,7 +53,7 @@
          window.location.href = "login.html";
          
      }
-fetch("http://127.0.0.1:8000/wishes/", {
+fetch("/api/wishes/", {
     headers: {
         "X-User-ID": userId
     }
@@ -123,7 +123,7 @@ container.addEventListener("click", function(e){
 
     const id = e.target.getAttribute("data-id");
 
-    fetch(`http://127.0.0.1:8000/wishes/${id}`,{
+    fetch(`/api/wishes/${id}`,{
       method:"DELETE",
       headers: {
           "X-User-ID": userId
