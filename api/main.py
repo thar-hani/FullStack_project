@@ -1,10 +1,21 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
+from fastapi.responses import JSONResponse
 from api import model
 from api.db import database
 from api.routers import user, story, todo, wish
 from fastapi.middleware.cors import CORSMiddleware
+import traceback
 
 app = FastAPI()
+
+@app.exception_handler(Exception)
+async def global_exception_handler(request: Request, exc: Exception):
+    print(f"Global exception: {exc}")
+    traceback.print_exc()
+    return JSONResponse(
+        status_code=500,
+        content={"detail": "Internal Server Error", "error_message": str(exc), "error_type": type(exc).__name__}
+    )
 
 @app.on_event("startup")
 async def startup():
