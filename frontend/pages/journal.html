@@ -102,6 +102,7 @@
       </main>
     </div>
 <script>
+(function() {
 function loadStories() {
     const userId = localStorage.getItem("user_id");
     if (!userId) {
@@ -156,9 +157,9 @@ data.slice(-3).reverse().forEach(story => {
 });
     });
 }
-
 // Load when page opens
 loadStories();
+})();
 let selectedMood = "";
 
 document.getElementById("contentInput").focus();

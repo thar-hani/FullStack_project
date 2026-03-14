@@ -45,6 +45,7 @@
   </div>
 
 <script>
+    (function() {
       const container = document.getElementById("demo");
 
       const userId = localStorage.getItem("user_id");
@@ -128,6 +129,7 @@ document.getElementById("searchBtn").addEventListener("click", function () {
 });
         })
         .catch((error) => console.log(error));
+    })();
 </script>
 
 
