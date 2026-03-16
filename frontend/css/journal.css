@@ -17,29 +17,29 @@ body{
 }
 
 header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 60px;
-    background: #f2f2f2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 60px;
+  background: #f2f2f2;
 }
 
 /* Logo Section */
 .name .story {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
 
 .book {
-    width: 40px;
+  width: 40px;
 }
 
 .logo {
-    font-size: 20px;
-    font-weight: 600;
-    color: #5a2ca0;
+  font-size: 20px;
+  font-weight: 600;
+  color: #5a2ca0;
 }
 /* Navigation Links */
 .features {
@@ -85,11 +85,17 @@ header {
 }
 
 /* Sidebar */
+
+.sidebar {
+  height: 90vh;
+  overflow-y: auto;
+}
+
 .sidebar {
   width: 300px;
   background: #fff;
   padding: 10px;
-  height: 800px;
+  height: 788px;
 }
 
 .search-box input {
@@ -308,10 +314,6 @@ main textarea {
   font-family: "Poppins", sans-serif;
   transition: border-color 0.3s;
 
-}
-.sidebar {
-    height: 90vh;
-    overflow-y: auto;
 }
 
 .entry-text {
