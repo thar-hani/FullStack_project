@@ -70,13 +70,19 @@
             const card = document.createElement("div");
             card.classList.add("card");
 
-            card.innerHTML = `
+           card.innerHTML = `
+              <div class="heading">
               <h3>${todo.task}</h3>
-              <p>${todo.date}</p>
-              <p>${todo.time}</p>
               <button class="delete-btn" data-id="${todo.todo_id}">Delete</button>
-              <span class="status ${todo.status === "Achieved" ? "achieved" : "pending"}">  ${todo.status} </span>
-            `;
+              </div>
+
+              <div class="card-info">
+                <span class="tag">${todo.category || "Goal"}</span>
+                <span class="date">${todo.date}</span>
+                <span class="time">${todo.time}</span>
+                <span class="status ${todo.status === "Achieved" ? "achieved" : "pending"}">${todo.status}</span>
+              </div>
+           `;
 
             container.appendChild(card);
           });

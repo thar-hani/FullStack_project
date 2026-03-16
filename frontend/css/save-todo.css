@@ -150,12 +150,12 @@ header {
   background: #624783;
 }
 .search{
-  margin-left: 90px;
-  align-items: center;
-  padding: 8px;
-  border: 1px solid;
-  border-radius: 7px;
-  width: 500px;
+  display:block;
+  margin:0 auto;
+  padding:10px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  width:500px;
 }
 /* CARD WRAPPER */
 .card-wrapper {
@@ -171,17 +171,18 @@ header {
   flex-direction: column;
   gap: 18px;
 }
+
 .heading{
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
 
-.card-details{
+/* Card Design */
+.card-info{
   display:flex;
   align-items:center;
   gap:12px;
-  margin-top:8px;
 }
 
 .tag{
@@ -194,7 +195,7 @@ header {
 }
 
 .date{
-  font-size:13px;
+  font-size:14px;
   color:#333;
 }
 
@@ -232,7 +233,6 @@ header {
   color: #555;
   margin-bottom: 5px;
 }
-
 .pending {
   font-size: 12px;
   background: #f9e3c6;
