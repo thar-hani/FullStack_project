@@ -150,12 +150,12 @@ header {
   background: #624783;
 }
 .search{
-  display:block;
-  margin:0 auto;
-  padding:10px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  width:500px;
+  margin-left: 90px;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid;
+  border-radius: 7px;
+  width: 500px;
 }
 /* CARD WRAPPER */
 .card-wrapper {
@@ -179,6 +179,18 @@ header {
 }
 
 /* Card Design */
+.card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
 .card-info{
   display:flex;
   align-items:center;
