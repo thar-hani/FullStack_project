@@ -164,7 +164,6 @@ header {
   gap: 18px;
 }
 
-/* TODO CARD */
 /* Cards Container */
 #demo {
   margin-top: 10px;
@@ -177,18 +176,47 @@ header {
   justify-content:space-between;
   align-items:center;
 }
-/* Card Design */
-.card {
-  background: #ffffff;
-  padding: 18px 20px;
-  border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: 0.3s ease;
-  position: relative;
+
+.card-details{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-top:8px;
 }
 
-.card:hover {
-  transform: translateY(-4px);
+.tag{
+  background:#e8ddff;
+  color:#5c2178;
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:20px;
+  font-weight:600;
+}
+
+.date{
+  font-size:13px;
+  color:#333;
+}
+
+.time{
+  font-size:13px;
+  color:#777;
+}
+
+.status{
+  font-size:12px;
+  padding:5px 10px;
+  border-radius:20px;
+}
+
+.pending{
+  background:#f9e3c6;
+  color:#c77700;
+}
+
+.achieved{
+  background:#e6f7ec;
+  color:#1c8c3a;
 }
 
 /* Title */
@@ -204,18 +232,6 @@ header {
   color: #555;
   margin-bottom: 5px;
 }
-
-/* Status Styling */
-/* .card p:last-child {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 5px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
-  background: #e6f7ec;
-  color: #1c8c3a;
-} */
 
 .pending {
   font-size: 12px;

@@ -44,10 +44,10 @@
 
       <form class="profile-form">
         <label>Name</label>
-        <input type="text" placeholder="Enter your name" required />
+        <input type="text" id="profileName" placeholder="Enter your name" required />
 
         <label>Email</label>
-        <input type="email" placeholder="Enter your email" required />
+        <input type="email" id="profileEmail" placeholder="Enter your email" required />
       </form>
 
       <a class="edit-btn" href="./edit_profice.html">Edit Profile</a>
@@ -55,5 +55,40 @@
         <a href="../index.html" class="back-btn">← Back to home</a>
       </div>
     </div>
+
+    <script>
+      async function fetchProfile() {
+        const userId = localStorage.getItem("user_id");
+        if (!userId) {
+          alert("Please login first.");
+          window.location.href = "./login.html";
+          return;
+        }
+
+        try {
+          const response = await fetch("/api/users/profile", {
+            method: "GET",
+            headers: {
+              "X-User-ID": userId
+            }
+          });
+
+          if (response.ok) {
+            const userData = await response.json();
+            document.getElementById("profileName").value = userData.full_name;
+            document.getElementById("profileEmail").value = userData.emailID;
+          } else {
+            console.error("Failed to fetch profile:", response.statusText);
+            alert("Session expired or invalid. Please login again.");
+            window.location.href = "./login.html";
+          }
+        } catch (error) {
+          console.error("Error fetching profile:", error);
+        }
+      }
+
+      // Fetch profile on page load
+      window.onload = fetchProfile;
+    </script>
   </body>
 </html>
