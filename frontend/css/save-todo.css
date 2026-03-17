@@ -151,6 +151,7 @@ header {
 }
 .search{
   margin-left: 90px;
+  margin-bottom: 10px;
   align-items: center;
   padding: 8px;
   border: 1px solid;
@@ -185,7 +186,6 @@ header {
   border-radius: 14px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: 0.3s ease;
-  position: relative;
 }
 
 .card:hover {
@@ -195,15 +195,6 @@ header {
   display:flex;
   align-items:center;
   gap:12px;
-}
-
-.tag{
-  background:#e8ddff;
-  color:#5c2178;
-  font-size:12px;
-  padding:5px 10px;
-  border-radius:20px;
-  font-weight:600;
 }
 
 .date{
