@@ -247,9 +247,9 @@ button{
   background: #fab4b4;
   color: #b10000;
   border: none;
-  padding: 3px;   /* smaller padding */
-  font-size: 13px;    /* smaller text */
-  border-radius: 4px; /* slightly smaller corners */
+  padding: 3px;   
+  font-size: 13px;    
+  border-radius: 4px; 
   cursor: pointer;
   transition: 0.2s;
 }

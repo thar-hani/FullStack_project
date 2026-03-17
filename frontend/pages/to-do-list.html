@@ -82,15 +82,19 @@ function loadTodos() {
       }
       return res.json();
     })
-    .then(data => {
+ .then(data => {
 
-      const list = document.getElementById("todoList");
-      list.innerHTML = "";
+  const list = document.getElementById("todoList");
+  list.innerHTML = "";
 
-      data.forEach(todo => {
-const isChecked = todo.status === "Completed" ? "checked" : "";
+  // only last 5 todos
+  const lastFive = data.slice(-5).reverse();
 
-const li = `
+  lastFive.forEach(todo => {
+
+    const isChecked = todo.status === "Completed" ? "checked" : "";
+
+    const li = `
 <li>
   <div class="task-top">
     <input type="checkbox"
@@ -108,9 +112,10 @@ const li = `
 </li>
 `;
 
-        list.innerHTML += li;
-      });
-    });
+    list.innerHTML += li;
+  });
+
+});
 }
 
 // Add Todo
