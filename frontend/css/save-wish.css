@@ -233,28 +233,6 @@ header {
   color: #666;
 }
 
-/* Status Badge */
-.status {
-  margin-top: 8px;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 4px 10px;
-  border-radius: 12px;
-  display: inline-block;
-}
-
-/* Pending */
-.pending {
-  background: #f9e3c6;
-  color: #c77700;
-}
-
-/* Achieved */
-.achieved {
-  background: #e6f7ec;
-  color: #1c8c3a;
-}
-
 /* Catagory btn */
 button{
   display: flex;
