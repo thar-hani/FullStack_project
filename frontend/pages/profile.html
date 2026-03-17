@@ -80,11 +80,11 @@
             document.getElementById("profileName").value = userData.full_name;
             document.getElementById("profileEmail").value = userData.emailID;
 
-// Show first letter in avatar
-const avatar = document.getElementById("avatar");
-if(userData.full_name){
-  avatar.textContent = userData.full_name.charAt(0).toUpperCase();
-}
+         // Show first letter in avatar
+          const avatar = document.getElementById("avatar");
+            if(userData.full_name){
+            avatar.textContent = userData.full_name.charAt(0).toUpperCase();
+            }
           } else {
             console.error("Failed to fetch profile:", response.status, response.statusText);
             const errorData = await response.json().catch(() => ({}));
