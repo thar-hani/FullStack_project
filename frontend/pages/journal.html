@@ -232,10 +232,17 @@ document.getElementById("saveBtn").addEventListener("click", function () {
 
     const date = document.getElementById("dateInput").value;
     const title = document.getElementById("titleInput").value;
-    const content = document.getElementById("contentInput").innerHTML;
+    const content = document.getElementById("contentInput").innerHTML.trim();
     const tag = document.getElementById("tagSelect").value;
-    
+
+    // Check if content is empty
+    if (!content || content === "<br>") {
+        alert("Write something in your journal!");
+        return; // stop execution
+    }
+
     const userId = localStorage.getItem("user_id");
+
     fetch("/api/stories/", {
         method: "POST",
         headers: {
@@ -243,12 +250,13 @@ document.getElementById("saveBtn").addEventListener("click", function () {
             "X-User-ID": userId
         },
         body: JSON.stringify({
-        date: date,
-        title: title,
-        story: content,          
-        mood: selectedMood,
-        tags: tag 
+            date: date,
+            title: title,
+            story: content,
+            mood: selectedMood,
+            tags: tag
         })
+    
     })
     .then(response => {
         if (response.status === 401) {
