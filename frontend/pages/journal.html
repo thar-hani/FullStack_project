@@ -185,21 +185,22 @@ document.getElementById("underline-btn").addEventListener("click", function() {
 });
 
 // Highlight
-document.getElementById("highlight-btn").addEventListener("click", function() {
+document.getElementById("highlight-btn").addEventListener("click", function () {
     editor.focus();
-    document.execCommand("hiliteColor", false, "yellow");
-});
 
-document.querySelectorAll(".emoji-btn").forEach(button => {
-    button.addEventListener("click", function() {
-        selectedMood = this.textContent;
+    const selection = window.getSelection();
 
-        // Optional: highlight selected emoji
-        document.querySelectorAll(".emoji-btn").forEach(btn => {
-            btn.style.transform = "scale(1)";
-        });
-        this.style.transform = "scale(1.3)";
-    });
+    if (!selection.rangeCount) return;
+
+    const range = selection.getRangeAt(0);
+    const parent = range.startContainer.parentNode;
+
+    // Check if already highlighted
+    if (parent.style && parent.style.backgroundColor === "yellow") {
+        document.execCommand("removeFormat"); // remove highlight
+    } else {
+        document.execCommand("hiliteColor", false, "yellow"); // apply highlight
+    }
 });
 
 // Search on icon click
