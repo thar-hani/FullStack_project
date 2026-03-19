@@ -8,6 +8,12 @@ body {
   background: #dfdfe0;;
 }
 
+body{
+  background-image: url("https://static.vecteezy.com/system/resources/thumbnails/065/899/194/small/watercolor-blue-floral-background-vector.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 header {
     display: flex;
     justify-content: space-between;
