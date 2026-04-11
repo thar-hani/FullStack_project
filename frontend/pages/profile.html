@@ -66,7 +66,6 @@
         }
 
         try {
-          // Use relative path for Vercel deployment compatibility
           const response = await fetch("/api/users/profile", {
             method: "GET",
             headers: {
@@ -80,7 +79,6 @@
             document.getElementById("profileName").value = userData.full_name;
             document.getElementById("profileEmail").value = userData.emailID;
 
-         // Show first letter in avatar
           const avatar = document.getElementById("avatar");
             if(userData.full_name){
             avatar.textContent = userData.full_name.charAt(0).toUpperCase();
@@ -97,8 +95,7 @@
           alert("An error occurred while fetching your profile. Please check your connection.");
         }
       }
-
-      // Fetch profile on page load
+      
       document.addEventListener('DOMContentLoaded', fetchProfile);
     </script>
   </body>
